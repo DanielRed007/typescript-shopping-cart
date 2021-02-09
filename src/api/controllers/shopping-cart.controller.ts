@@ -3,6 +3,7 @@ import { ShoppingCart } from "../../ShoppingCart/ShoppingCart";
 
 // Models
 import Product from "../../models/Product";
+import { IProduct } from "../../interfaces/interfaces";
 
 const shoppingCart = new ShoppingCart();
 
@@ -16,7 +17,8 @@ export class ShoppingCartController {
 
     if (quantity > 0) {
       Product.findOne({ product_id: product })
-        .then((item) => {
+        .then((item: IProduct) => {
+          console.log(item);
           shoppingCart.addToCart(item, quantity);
           shoppingCart.saveCart(request);
           response.json(shoppingCart.data);
@@ -33,7 +35,7 @@ export class ShoppingCartController {
     let product = parseInt(request.params.product_id, 10);
 
     Product.findOne({ product_id: product })
-      .then((item: any) => {
+      .then((item: IProduct) => {
         shoppingCart.removeFromCart(item.product_id);
         shoppingCart.calculateTotals();
         response.json(shoppingCart.data);

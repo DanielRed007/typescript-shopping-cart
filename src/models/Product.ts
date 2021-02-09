@@ -1,9 +1,12 @@
 import * as mongoose from "mongoose";
+import { ObjectId } from "mongoose";
+import { IProduct } from "../interfaces/interfaces";
 
 let Schema = mongoose.Schema;
 
 let ProductsSchema = new Schema(
   {
+    _id: String,
     product_id: Number,
     id: String,
     title: String,
@@ -15,4 +18,4 @@ let ProductsSchema = new Schema(
   { collection: "products" }
 );
 
-export default mongoose.model("Product", ProductsSchema);
+export default mongoose.model<IProduct>("Product", ProductsSchema);
