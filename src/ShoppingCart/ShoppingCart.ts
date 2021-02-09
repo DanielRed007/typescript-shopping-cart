@@ -98,10 +98,10 @@ export class ShoppingCart {
     let updated = false;
 
     ids.forEach((id) => {
-      qtys.forEach((qty) => {
+      qtys.forEach((quantity) => {
         map.push({
           id: parseInt(id, 10),
-          qty: parseInt(qty, 10),
+          quantity: parseInt(quantity, 10),
         });
       });
     });
@@ -109,14 +109,15 @@ export class ShoppingCart {
     map.forEach((obj) => {
       this.data.items.forEach((item) => {
         if (item.id === obj.id) {
-          if (obj.qty > 0 && obj.qty !== item.qty) {
-            item.qty = obj.qty;
+          if (obj.quantity > 0 && obj.quantity !== item.quantity) {
+            item.quantity = obj.quantity;
             updated = true;
           }
         }
       });
     });
 
+    this.calculateTotals();
     if (updated) {
       this.calculateTotals();
     }

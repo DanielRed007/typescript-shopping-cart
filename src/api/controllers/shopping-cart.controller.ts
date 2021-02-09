@@ -1,5 +1,3 @@
-import { SecurityEncryption } from "../../config/SecurityEncription";
-
 // Shopping Cart
 import { ShoppingCart } from "../../ShoppingCart/ShoppingCart";
 
@@ -36,7 +34,6 @@ export class ShoppingCartController {
 
     Product.findOne({ product_id: product })
       .then((item: any) => {
-        console.log(item);
         shoppingCart.removeFromCart(item.product_id);
         shoppingCart.calculateTotals();
         response.json(shoppingCart.data);
@@ -50,6 +47,7 @@ export class ShoppingCartController {
 
     shoppingCart.updateCart(products, quantities);
     response.json(shoppingCart.data);
+    request.session.cart = shoppingCart.data;
   }
 
   public async emptyCart(request, response) {
