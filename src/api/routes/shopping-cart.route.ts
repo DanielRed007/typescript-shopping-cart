@@ -11,5 +11,6 @@ router.delete(
   shoppingCartController.removeFromCart
 );
 router.post("/update-quantities", shoppingCartController.updateProductQuantity);
+router.delete("/empty-cart", shoppingCartController.emptyCart);
 
 export default router;

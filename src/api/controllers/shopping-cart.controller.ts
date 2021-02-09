@@ -51,4 +51,9 @@ export class ShoppingCartController {
     shoppingCart.updateCart(products, quantities);
     response.json(shoppingCart.data);
   }
+
+  public async emptyCart(request, response) {
+    shoppingCart.emptyCart(request);
+    response.json(shoppingCart.data);
+  }
 }
