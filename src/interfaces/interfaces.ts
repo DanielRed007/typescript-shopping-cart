@@ -1,4 +1,5 @@
 import { Document, ObjectId } from "mongoose";
+import { Response, Request, Express } from "express";
 
 export interface ICartProduct {
   product_id: number;
@@ -25,4 +26,17 @@ export interface ICartData {
   items: IProduct[];
   totals: number;
   formattedTotals: string;
+}
+
+export interface IRequestSession {
+  cookie: any;
+  cart: ICartData;
+}
+
+export interface IResponse extends Response {
+  session: Express;
+}
+
+export interface IRequest extends Request {
+  session: any;
 }
