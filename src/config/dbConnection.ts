@@ -2,8 +2,8 @@ import * as mongoose from "mongoose";
 
 import config from "./CartConfig";
 
-export const connectDB = () => {
-  mongoose
+export const connectDB = async () => {
+  await mongoose
     .connect(config.db.url, {
       useCreateIndex: true,
       useFindAndModify: true,
