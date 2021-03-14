@@ -1,7 +1,6 @@
 import * as mongoose from "mongoose";
 
 import Product from "../models/Product";
-import { ShoppingCartController } from "../api/controllers/shopping-cart.controller";
 import config from "../config/CartConfig";
 
 import { ShoppingCart } from "../ShoppingCart/ShoppingCart";
@@ -27,8 +26,6 @@ describe("Shopping Cart", () => {
     expect(total).toBe("$489.93");
   });
 
-  test("Update item from shopping cart", async () => {});
-
   test("Remove item from shopping cart", async () => {
     const id = 29;
 
@@ -41,8 +38,6 @@ describe("Shopping Cart", () => {
     expect(shoppingCart.data.length).toBeUndefined();
     expect(shoppingCart.data.formattedTotals).toBe("$0.00");
   });
-
-  test("Empty shopping cart", () => {});
 
   afterAll(async () => {
     await mongoose.connection.close();
