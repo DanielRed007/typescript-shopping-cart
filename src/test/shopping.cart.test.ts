@@ -72,8 +72,6 @@ describe("Shopping Cart", () => {
     expect(shoppingCart.data.length).toBeUndefined();
   });
 
-  test("Empty shopping cart", () => {});
-
   afterAll(async () => {
     await mongoose.connection.close();
   });
